@@ -4,6 +4,7 @@
 
 function declare_variables!(db, sets, years, proj)
     sectors = sets.sectors
+    public_investment_types = sets.public_investment_types
 
     JuMP.@variables db.model begin
         # ----------------------------------------------------------------------
@@ -38,6 +39,9 @@ function declare_variables!(db, sets, years, proj)
         INFG[years]
         INFP[years]
 
+        IVG[years]
+        IVGI[public_investment_types, years] >= 1e-9
+
         # ----------------------------------------------------------------------
         # Endogenous stock variables
         # ----------------------------------------------------------------------
@@ -65,7 +69,6 @@ function declare_variables!(db, sets, years, proj)
 
         FDI[years]
         GT[years]
-        IVG[years]
         NFP[years]
         NTRG[years]
         NTRP[years]
@@ -105,6 +108,7 @@ function declare_variables!(db, sets, years, proj)
         irdg[years]
         irfg[years]
         irfp[years]
+        ivggr[public_investment_types, proj]
 
         g[proj]
         v[proj]
@@ -144,6 +148,7 @@ function declare_variables!(db, sets, years, proj)
         FDI,
         GT,
         IVG,
+        IVGI,
         NFP,
         NTRG,
         NTRP,
@@ -155,6 +160,7 @@ function declare_variables!(db, sets, years, proj)
         XPI,
         gamma,
         xgr,
+        ivggr,
         k0,
         k1,
         m0,
@@ -183,6 +189,7 @@ const OUTPUT_KEYS = Any[
     :CG,
     :CP,
     :IVP,
+    :IVG,
     :P,
     :GDY,
     :GDS,
@@ -205,4 +212,5 @@ const OUTPUT_KEYS = Any[
 
     [(:GDPS, sector) for sector in MODEL_SETS.sectors]...,
     [(:XS, sector) for sector in MODEL_SETS.sectors]...,
+    [(:IVGI, type) for type in MODEL_SETS.public_investment_types]...,
 ]

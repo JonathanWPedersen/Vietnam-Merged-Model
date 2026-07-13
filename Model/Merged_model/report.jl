@@ -51,11 +51,6 @@ function simulation_rows()
         ),
         (
             group = "Quantities",
-            label = "IVG (bn VND, const.)",
-            key = :IVG,
-        ),
-        (
-            group = "Quantities",
             label = "NTRG (mn USD)",
             key = :NTRG,
         ),
@@ -99,6 +94,28 @@ function simulation_rows()
 
     endogenous_rows = [
         (group = "", label = "P", key = :P),
+
+        (
+            group = "Quantities",
+            label = "IVG (bn VND, const.)",
+            key = :IVG,
+        ),
+        (
+            group = "Public investment",
+            label = "Infrastructure investment",
+            key = (:IVGI, :infrastructure),
+        ),
+        (
+            group = "Public investment",
+            label = "Education investment",
+            key = (:IVGI, :education),
+        ),
+        (
+            group = "Public investment",
+            label = "Health investment",
+            key = (:IVGI, :health),
+        ),
+
 
         (
             group = "Quantities",

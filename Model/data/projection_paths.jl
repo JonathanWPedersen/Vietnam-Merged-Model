@@ -54,6 +54,11 @@ function build_projection_paths(
             assumptions.export_growth,
             years,
         ),
+        indexed_paths(
+            :ivggr,
+            assumptions.government_investment_growth,
+            years,
+        ),
     )
 
     growth_rates = (
@@ -64,7 +69,6 @@ function build_projection_paths(
 
         GT = PD_growth,
         TG = assumptions.government_revenue_growth,
-        IVG = assumptions.government_investment_growth,
         NDDG = assumptions.government_domestic_debt_growth,
 
         NFP = assumptions.net_factor_payments_growth,
