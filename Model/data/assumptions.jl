@@ -19,8 +19,20 @@ function model_assumptions()
 
         # Fiscal and external growth
         government_revenue_growth = 0.050,
-        government_investment_growth = 0.050,
         government_domestic_debt_growth = 0.050,
+
+        government_investment_growth = Dict(
+            :infrastructure => 0.050,
+            :education => 0.050,
+            :health => 0.050,
+        ),
+
+        government_investment_shares = Dict(
+            :infrastructure => 0.60,
+            :education => 0.20,
+            :health => 0.20,
+        ),
+
 
         net_factor_payments_growth = 0.050,
         government_transfers_growth = 0.0,

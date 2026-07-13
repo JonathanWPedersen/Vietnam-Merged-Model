@@ -72,8 +72,11 @@ function build_square_model(
         GovernmentBudget.define_equations(
             db,
             vars;
+            public_investment_types =
+                MODEL_SETS.public_investment_types,
             proj = projection_periods,
         )
+
 
     money_market =
         MoneyMarket.define_equations(

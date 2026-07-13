@@ -136,6 +136,13 @@ function build_base_year(obs, assumptions, sam::SAM; year::Int)
 
     v[:C] = v[:CP] + v[:CG]
 
+    for type in MODEL_SETS.public_investment_types
+        v[(:IVGI, type)] =
+            assumptions.government_investment_shares[type] *
+            v[:IVG]
+    end
+
+
     # Sectoral splits ------------------------------------------------------------
 
     sectors = MODEL_SETS.sectors

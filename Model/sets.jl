@@ -8,4 +8,11 @@ const MODEL_SETS = (
         :industry,
         :services,
     ),
+
+    public_investment_types = (
+        :infrastructure,
+        :education,
+        :health,
+    ),
+
 )

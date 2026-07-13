@@ -2,12 +2,26 @@ module GovernmentBudget
 import JuMP
 using SquareModels
 
-function define_equations(db, vars; proj)
+function define_equations(db, vars; public_investment_types, proj)
     (; BRG, CG, DCG, INDG, INFG, NDDG, NFDG,
-       X, GT, IVG, NTRG, TG, E, PD, XPI,
-       g, irdg, irfg) = vars
+       X, GT, IVG, IVGI, NTRG, TG, E, PD, XPI,
+       g, irdg, irfg, ivggr) = vars
 
     return @block db begin
+
+        # =====================================================================
+        # Extensions
+        # =====================================================================        
+
+        IVGI[i = public_investment_types, t = proj],
+            IVGI[i, t] ==
+                (1 + ivggr[i, t]) * IVGI[i, t - 1]
+
+        IVG[t = proj],
+            IVG[t] ==
+                sum(IVGI[i, t] for i in public_investment_types)
+
+        
         # =====================================================================
         # Equations (14)-(16): Government budget and debt
         # =====================================================================
