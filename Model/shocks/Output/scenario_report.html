@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        Vietnam Merged Model — Scenarios
+    </title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f4f7fb;
+            color: #18212f;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            width: min(1500px, 100%);
+            margin: 0 auto;
+            padding: 32px 26px 56px;
+        }
+
+        section {
+            margin-top: 24px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #d9e0e8;
+            border-radius: 8px;
+        }
+
+        .plots {
+            display: grid;
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(480px, 1fr)
+                );
+            gap: 18px;
+        }
+
+        img {
+            width: 100%;
+            border: 1px solid #d9e0e8;
+        }
+
+        pre {
+            padding: 12px;
+            overflow-x: auto;
+            background: #f3f5f7;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>
+            Vietnam Merged Model — Scenario Report
+        </h1>
+
+        <section>
+            <h2>Scenarios</h2>
+<h3>Export Slowdown</h3>
+<pre>(export_growth = Dict(:industry =&gt; Dict(2027 =&gt; -0.03)),)</pre>
+<h3>Fdi Slowdown</h3>
+<pre>(foreign_direct_investment_growth = Dict(2027 =&gt; -0.2),)</pre>
+<h3>Infrastructure Expansion</h3>
+<pre>(government_investment_growth = Dict(:infrastructure =&gt; Dict(2027 =&gt; 0.15)),)</pre>
+<h3>Combined External Shock</h3>
+<pre>(export_growth = Dict(:industry =&gt; Dict(2027 =&gt; -0.03)), foreign_direct_investment_growth = Dict(2027 =&gt; -0.2))</pre>
+</section>
+<section>
+    <h2>GDP</h2>
+
+    <div class="plots">
+        <img
+            src="plots/GDP_levels.png"
+            alt="GDP levels"
+        >
+
+        <img
+            src="plots/GDP_deviation.png"
+            alt="GDP deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>X</h2>
+
+    <div class="plots">
+        <img
+            src="plots/X_levels.png"
+            alt="X levels"
+        >
+
+        <img
+            src="plots/X_deviation.png"
+            alt="X deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>M</h2>
+
+    <div class="plots">
+        <img
+            src="plots/M_levels.png"
+            alt="M levels"
+        >
+
+        <img
+            src="plots/M_deviation.png"
+            alt="M deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>IV</h2>
+
+    <div class="plots">
+        <img
+            src="plots/IV_levels.png"
+            alt="IV levels"
+        >
+
+        <img
+            src="plots/IV_deviation.png"
+            alt="IV deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>IVG</h2>
+
+    <div class="plots">
+        <img
+            src="plots/IVG_levels.png"
+            alt="IVG levels"
+        >
+
+        <img
+            src="plots/IVG_deviation.png"
+            alt="IVG deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>IVP</h2>
+
+    <div class="plots">
+        <img
+            src="plots/IVP_levels.png"
+            alt="IVP levels"
+        >
+
+        <img
+            src="plots/IVP_deviation.png"
+            alt="IVP deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>BRG</h2>
+
+    <div class="plots">
+        <img
+            src="plots/BRG_levels.png"
+            alt="BRG levels"
+        >
+
+        <img
+            src="plots/BRG_deviation.png"
+            alt="BRG deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>R</h2>
+
+    <div class="plots">
+        <img
+            src="plots/R_levels.png"
+            alt="R levels"
+        >
+
+        <img
+            src="plots/R_deviation.png"
+            alt="R deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>DCP</h2>
+
+    <div class="plots">
+        <img
+            src="plots/DCP_levels.png"
+            alt="DCP levels"
+        >
+
+        <img
+            src="plots/DCP_deviation.png"
+            alt="DCP deviation"
+        >
+    </div>
+</section>
+
+<section>
+    <h2>NFDP</h2>
+
+    <div class="plots">
+        <img
+            src="plots/NFDP_levels.png"
+            alt="NFDP levels"
+        >
+
+        <img
+            src="plots/NFDP_deviation.png"
+            alt="NFDP deviation"
+        >
+    </div>
+</section>
+
+    </main>
+</body>
+</html>
