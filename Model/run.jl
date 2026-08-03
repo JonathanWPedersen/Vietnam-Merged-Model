@@ -1,9 +1,7 @@
 using Pkg
 using Serialization
 
-Pkg.add("CairoMakie")
-Pkg.update("SquareModels")
-Pkg.status("SquareModels")
+Pkg.instantiate()
 
 Pkg.activate(@__DIR__; io = devnull)
 
@@ -28,10 +26,14 @@ include(joinpath(@__DIR__, "Merged_model", "run_model.jl"))
 println()
 println("Full model pipeline completed.")
 
-# scenario running, commented out uncomment when needed
-println()
-println("Running scenarios...")
+# Change to true when scenarios should run.
+run_scenarios = false
 
-run(
-    `$(Base.julia_cmd()) --project=$(Base.active_project()) $(joinpath(@__DIR__, "shocks", "run_scenario.jl"))`,
-)
+if run_scenarios
+    println()
+    println("Running scenarios...")
+
+    run(
+        `$(Base.julia_cmd()) --project=$project_root $(joinpath(project_root, "shocks", "run_scenario.jl"))`,
+    )
+end
