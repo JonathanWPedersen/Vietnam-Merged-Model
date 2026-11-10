@@ -6,10 +6,11 @@
 # ==============================================================================
 
 const SCENARIOS = (
-    infrastructure_expansion = (
-        government_investment_growth = Dict(
-            :infrastructure => Dict(
-                2027 => 0.150,
+    industrial_export_slowdown = (
+        export_growth = Dict(
+            :industry => Dict(
+                2026 => 0.040,
+                2029 => 0.090,
             ),
         ),
     ),
@@ -19,14 +20,7 @@ const SCENARIOS = (
 # Indexed variables can be written as (:IVGI, :infrastructure).
 
 const PLOT_VARIABLES = [
-    :GDP,
+    (:XS, :industry),
     :X,
     :M,
-    :IV,
-    :IVG,
-    :IVP,
-    :BRG,
-    :R,
-    :DCP,
-    :NFDP,
 ]
