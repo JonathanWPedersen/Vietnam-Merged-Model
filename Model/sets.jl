@@ -4,10 +4,16 @@
 
 const MODEL_SETS = (
     sectors = (
-        :agriculture,
-        :industry,
-        :services,
+        :agriculture, 
+        :industry, 
+        :services
     ),
+    gdp_sectors = (
+        :agriculture,
+        :industry, 
+        :services
+    ),
+
 
     public_investment_types = (
         :infrastructure,

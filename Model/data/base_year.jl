@@ -146,10 +146,11 @@ function build_base_year(obs, assumptions, sam::SAM; year::Int)
     # Sectoral splits ------------------------------------------------------------
 
     sectors = MODEL_SETS.sectors
+    gdp_sectors = MODEL_SETS.gdp_sectors
 
     GDP_shares = sector_shares(
         read_group(obs, SECTOR_GDP, year),
-        sectors,
+        gdp_sectors,
     )
 
     export_shares = sector_shares(
@@ -157,8 +158,11 @@ function build_base_year(obs, assumptions, sam::SAM; year::Int)
         sectors,
     )
 
-    for sector in sectors
+    for sector in gdp_sectors
         v[(:GDPS, sector)] = GDP_shares[sector] * v[:GDP]
+    end
+
+    for sector in sectors
         v[(:XS, sector)] = export_shares[sector] * v[:X]
     end
 

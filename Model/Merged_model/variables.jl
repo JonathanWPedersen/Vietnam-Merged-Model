@@ -4,6 +4,7 @@
 
 function declare_variables!(db, sets, years, proj)
     sectors = sets.sectors
+    gdp_sectors = sets.gdp_sectors
     public_investment_types = sets.public_investment_types
 
     JuMP.@variables db.model begin
@@ -11,7 +12,7 @@ function declare_variables!(db, sets, years, proj)
         # Endogenous flow variables
         # ----------------------------------------------------------------------
 
-        GDPS[sectors, years] >= 1e-9
+        GDPS[gdp_sectors, years] >= 1e-9
         GDP[years] >= 1e-9
 
         XS[sectors, years] >= 1e-9
@@ -93,7 +94,7 @@ function declare_variables!(db, sets, years, proj)
         # Parameters and assumptions
         # ----------------------------------------------------------------------
 
-        gamma[sectors, proj]
+        gamma[gdp_sectors, proj]
         xgr[sectors, proj]
 
         k0[proj]
@@ -210,7 +211,7 @@ const OUTPUT_KEYS = Any[
     :DCP,
     :NFDP,
 
-    [(:GDPS, sector) for sector in MODEL_SETS.sectors]...,
+    [(:GDPS, sector) for sector in MODEL_SETS.gdp_sectors]...,
     [(:XS, sector) for sector in MODEL_SETS.sectors]...,
     [(:IVGI, type) for type in MODEL_SETS.public_investment_types]...,
 ]

@@ -64,6 +64,7 @@ function build_square_model(
             db,
             vars;
             sectors = MODEL_SETS.sectors,
+            gdp_sectors = MODEL_SETS.gdp_sectors,
             proj = projection_periods,
             base_period = base_year,
         )

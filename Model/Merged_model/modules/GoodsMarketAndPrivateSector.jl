@@ -4,7 +4,7 @@ using SquareModels
 
 using SquareModels
 
-function define_equations(db, vars; sectors, proj, base_period)
+function define_equations(db, vars; sectors, gdp_sectors, proj, base_period)
     (; GDPS, GDP, XS, X, IV, M, C, CG, CP, IVP,
        GDY, GDS, INDG, INFG, INFP, P, GT, IVG,
        NFP, NTRG, NTRP, TG, E, MPI, PD, XPI,
@@ -15,13 +15,13 @@ function define_equations(db, vars; sectors, proj, base_period)
         # Equations (1)-(13): Goods market and private sector
         # =====================================================================
 
-        GDPS[s = sectors, t = proj],
+        GDPS[s = gdp_sectors, t = proj],
             GDPS[s, t] ==
                 (1 + gamma[s, t]) * GDPS[s, t - 1]            # Eq. 1
 
         GDP[t = proj],
             GDP[t] ==
-                sum(GDPS[s, t] for s in sectors)              # Eq. 2
+                sum(GDPS[s, t] for s in gdp_sectors)              # Eq. 2
 
         XS[s = sectors, t = proj],
             XS[s, t] ==
