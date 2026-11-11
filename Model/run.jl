@@ -27,9 +27,9 @@ println()
 println("Full model pipeline completed.")
 
 # Change to true when scenarios should run.
-run_scenarios = false
+should_scenarios_run = true
 
-if run_scenarios
+if should_scenarios_run
     println()
     println("Running scenarios...")
 
