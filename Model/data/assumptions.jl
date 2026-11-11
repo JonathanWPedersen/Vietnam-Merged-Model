@@ -2,7 +2,8 @@ function model_assumptions()
     return (
         # Annual real growth
         gdp_growth = Dict(
-            :agriculture => 0.081,
+            :rice_agriculture => 0.081,
+            :non_rice_agriculture => 0.081,
             :industry => 0.100,
             :services => 0.102,
         ),

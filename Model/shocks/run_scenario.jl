@@ -419,6 +419,14 @@ function create_plots(
                     variable_label(key),
                 xlabel = "Year",
                 ylabel = "Level",
+                styles = [
+                    ifelse(
+                        name == :baseline,
+                        (linestyle = :solid,),
+                        (linestyle = :dash, linewidth = 3,),
+                    )
+                    for (name, _) in runs
+                ],
                 legend = (
                     position = :rb,
                 ),
@@ -467,6 +475,8 @@ function create_plots(
                     "$(variable_label(key)): deviation from baseline",
                 xlabel = "Year",
                 ylabel = "Percent",
+                linestyle = :dash,
+                linewidth = 3,
                 legend = (
                     position = :rb,
                 ),

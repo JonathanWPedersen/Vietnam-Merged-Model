@@ -20,7 +20,14 @@ const SCENARIOS = (
 # Indexed variables can be written as (:IVGI, :infrastructure).
 
 const PLOT_VARIABLES = [
-    (:XS, :industry),
+    :GDP,
     :X,
     :M,
+    :IV,
+    :IVG,
+    :IVP,
+    :BRG,
+    :R,
+    :DCP,
+    :NFDP,
 ]
