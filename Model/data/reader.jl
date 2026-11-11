@@ -127,24 +127,27 @@ const SERVICES_TRADE = "IMF external accounts — non-factor services" => [
     :services_imports => ("Non-factor services imports", identity),
 ]
 
-const SECTOR_EXPORT_GROUP = "GSO trade — goods exports by activity"
+const GOODS_EXPORTS    = "GSO trade — goods exports by activity"
+const SERVICES_EXPORTS = "GSO trade — services exports"
 
+# Model export sector => list of (source group, series) rows that add up to it.
 const SECTOR_EXPORT_SERIES = Dict(
     :agriculture => [
-        "Goods exports — Agriculture, Forestry and Fishing",
+        (GOODS_EXPORTS, "Goods exports — Agriculture, Forestry and Fishing"),
     ],
     :industry => [
-        "Goods exports — Mining and quarrying",
-        "Goods exports — Manufacturing",
-        "Goods exports — Electricity, gas, steam and air conditioning supply",
-        "Goods exports — Water supply, sewerage, waste management and remediation activities",
-        "Goods exports — Other commodities, n.e.s",
+        (GOODS_EXPORTS, "Goods exports — Mining and quarrying"),
+        (GOODS_EXPORTS, "Goods exports — Manufacturing"),
+        (GOODS_EXPORTS, "Goods exports — Electricity, gas, steam and air conditioning supply"),
+        (GOODS_EXPORTS, "Goods exports — Water supply, sewerage, waste management and remediation activities"),
+        (GOODS_EXPORTS, "Goods exports — Other commodities, n.e.s"),
     ],
     :services => [
-        "Goods exports — Transportation and storage",
-        "Goods exports — Information and communication",
-        "Goods exports — Professional, scientific and technical activities",
-        "Goods exports — Arts, entertainment and recreation",
+        (GOODS_EXPORTS, "Goods exports — Transportation and storage"),
+        (GOODS_EXPORTS, "Goods exports — Information and communication"),
+        (GOODS_EXPORTS, "Goods exports — Professional, scientific and technical activities"),
+        (GOODS_EXPORTS, "Goods exports — Arts, entertainment and recreation"),
+        (SERVICES_EXPORTS, "Services exports, balance-of-payments basis"),
     ],
 )
 
@@ -175,21 +178,13 @@ function aggregate_external_trade(obs, year)
     )
 end
 
-"Exports by model sector, mn USD. Services include BOP-basis services exports."
+"Exports by model sector, mn USD."
 function observed_sector_exports(obs, year)
-    goods(sector) = sum(
-        observed_value(obs, SECTOR_EXPORT_GROUP, series, year)
-        for series in SECTOR_EXPORT_SERIES[sector]
-    )
-
     return Dict(
-        :agriculture => goods(:agriculture),
-        :industry    => goods(:industry),
-        :services    => goods(:services) + observed_value(
-            obs,
-            "GSO trade — services exports",
-            "Services exports, balance-of-payments basis",
-            year,
-        ),
+        sector => sum(
+            observed_value(obs, group, series, year)
+            for (group, series) in rows
+        )
+        for (sector, rows) in SECTOR_EXPORT_SERIES
     )
 end
