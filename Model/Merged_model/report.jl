@@ -9,13 +9,8 @@ function simulation_rows()
 
         (
             group = "Quantities",
-            label = "Rice Agriculture GDP (bn VND, const.)",
-            key = (:GDPS, :rice_agriculture),
-        ),
-        (
-            group = "Quantities",
-            label = "Non-Rice Agriculture GDP (bn VND, const.)",
-            key = (:GDPS, :non_rice_agriculture),
+            label = "Agriculture GDP (bn VND, const.)",
+            key = (:GDPS, :agriculture),
         ),
         (
             group = "Quantities",
@@ -30,13 +25,8 @@ function simulation_rows()
 
         (
             group = "Quantities",
-            label = "Rice Agriculture Exports (mn USD)",
-            key = (:XS, :rice_agriculture)
-        ),
-        (
-            group = "Quantities",
-            label = "Non-Rice Agriculture Exports (mn USD)",
-            key = (:XS, :non_rice_agriculture)
+            label = "Agriculture Exports (mn USD)",
+            key = (:XS, :agriculture)
         ),
         (
             group = "Quantities",
