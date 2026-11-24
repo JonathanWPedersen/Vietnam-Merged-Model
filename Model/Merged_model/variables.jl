@@ -3,7 +3,7 @@
 # ==============================================================================
 
 function declare_variables!(db, sets, years, proj)
-    sectors = sets.sectors
+    export_sectors = sets.export_sectors
     gdp_sectors = sets.gdp_sectors
     public_investment_types = sets.public_investment_types
 
@@ -15,7 +15,7 @@ function declare_variables!(db, sets, years, proj)
         GDPS[gdp_sectors, years] >= 1e-9
         GDP[years] >= 1e-9
 
-        XS[sectors, years] >= 1e-9
+        XS[export_sectors, years] >= 1e-9
         X[years] >= 1e-9
 
         IV[years] >= 1e-9
@@ -95,7 +95,7 @@ function declare_variables!(db, sets, years, proj)
         # ----------------------------------------------------------------------
 
         gamma[gdp_sectors, proj]
-        xgr[sectors, proj]
+        xgr[export_sectors, proj]
 
         k0[proj]
         k1[proj]
@@ -212,6 +212,6 @@ const OUTPUT_KEYS = Any[
     :NFDP,
 
     [(:GDPS, sector) for sector in MODEL_SETS.gdp_sectors]...,
-    [(:XS, sector) for sector in MODEL_SETS.sectors]...,
+    [(:XS, sector) for sector in MODEL_SETS.export_sectors]...,
     [(:IVGI, type) for type in MODEL_SETS.public_investment_types]...,
 ]

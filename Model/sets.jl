@@ -3,15 +3,15 @@
 # ==============================================================================
 
 const MODEL_SETS = (
-    sectors = (
-        :agriculture, 
-        :industry, 
-        :services
+    export_sectors = (
+        :agriculture,
+        :industry,
+        :services,
     ),
     gdp_sectors = (
         :agriculture,
-        :industry, 
-        :services
+        :industry,
+        :services,
     ),
 
 
